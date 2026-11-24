@@ -57,7 +57,8 @@ def rule(draw, x0, y, x1, width=2, fill=RULE):
     draw.line([(x0, y), (x1, y)], fill=fill, width=width)
 
 
-def tile(draw, x, y, w, h, kicker, headline, body, accent=RED, head_size=26):
+def tile(draw, x, y, w, h, kicker, headline, body, accent=RED,
+         head_size=26, body_size=17, body_lines=2):
     """One bordered news tile with kicker, headline and body text."""
     draw.rectangle([x, y, x + w, y + h], fill=TILE_BG, outline=INK, width=2)
     draw.rectangle([x, y, x + w, y + 5], fill=accent)
@@ -68,11 +69,13 @@ def tile(draw, x, y, w, h, kicker, headline, body, accent=RED, head_size=26):
     for line in lines:
         draw.text((kx, hy), line, font=font(SERIF_B, head_size), fill=INK)
         hy += head_size + 6
-    blines = wrap(draw, body, font(SANS, 17), w - 28)[:2]
+    blines = wrap(draw, body, font(SANS, body_size),
+                  w - 28)[:body_lines]
     by = hy + 6
     for line in blines:
-        draw.text((kx, by), line, font=font(SANS, 17), fill=(52, 52, 52))
-        by += 22
+        draw.text((kx, by), line, font=font(SANS, body_size),
+                  fill=(52, 52, 52))
+        by += int(body_size * 1.28)
 
 
 def main():
@@ -129,8 +132,10 @@ def main():
     d.line([(ax0 + 100, ay0 - 58), (ax0 + 100, ay0 - 36)], fill=RED, width=5)
     d.text((ax0 + 8, ay0 - 96), "S&P 500  +4.7%",
            font=font(SANS_B, 19), fill=RED)
-    d.text((lx, gy + 104), "The board had said he would not return. "
-           "Trump: \u201cI made the deal.\u201d",
+    d.text((lx, gy + 104), "The board had said he would not return.",
+           font=font(SANS, 17), fill=GREY)
+    d.text((lx, gy + 126), "Trump: \u201cWe have one of our great stars "
+           "back in play.\u201d",
            font=font(SANS, 17), fill=GREY)
 
     # ---- Market reaction box (right of lead) ----
@@ -147,9 +152,9 @@ def main():
         ("S&P 500", "+4.7%", "in a single session"),
         ("Nvidia", "record gain", "largest one-day rise in"),
         ("", "", "US market-cap history"),
-        ("SK hynix", "+20%", "shares surge in Seoul"),
-        ("Megaspeed", "blacklisted", "US bars the Singapore"),
-        ("", "", "chip firm the same day"),
+        ("Nasdaq", "+6.5%", "in a single session"),
+        ("Dow", "+1,450 pts", "points gained Monday"),
+        ("", "", "both surge on Huang's return"),
     ]
     ry = by + 92
     for name, val, note in rows:
@@ -163,16 +168,15 @@ def main():
             ry += 23
     rule(d, bx + 16, ry + 4, bx + bw - 16, width=1, fill=GREY)
     para(d, bx + 16, ry + 14,
-         "Huang quit on 12 November over an affair with an executive "
-         "of Megaspeed, a firm US officials suspect of funnelling "
-         "chips to China.", font(SANS, 16), bw - 32, fill=(52, 52, 52),
-         leading=21)
+         "Huang quit on 12 November after reports of affairs, one "
+         "with a suspected Chinese spy.", font(SANS, 16), bw - 32,
+         fill=(52, 52, 52), leading=21)
 
     # ---- Row 2: three tiles ----
     ty, th, tw, gap = 586, 176, 304, 16
     tile(d, M, ty, tw, th, "WAR AT SEA",
          "Ukraine sinks Russian warship",
-         "Sea drones sank the frigate Merkury off Libya, Kyiv says.",
+         "Sea drones sank the corvette Merkury off Libya, Kyiv says.",
          accent=BLUE)
     tile(d, M + tw + gap, ty, tw, th, "KYIV REGION",
          "Drone strike kills 11 in Dymer",
@@ -193,17 +197,17 @@ def main():
          "Magnitude 6.5 quake strikes Vanuatu",
          "Tremor shakes the island nation; no tsunami warning.",
          accent=GREEN)
-    tile(d, M + 2 * (tw + gap), ty2, tw, th, "THE GULF",
-         "Iran hits Gulf sites as US squeezes",
-         "Trump warns of a \u201cvery traumatic\u201d outcome for Tehran.",
-         accent=RED)
+    tile(d, M + 2 * (tw + gap), ty2, tw, th, "THAI\u2013CAMBODIA",
+         "Truce holds after border war",
+         "Ceasefire ends weeks of clashes that killed 100+ and "
+         "displaced hundreds of thousands.",
+         accent=RED, body_size=16, body_lines=3)
 
     # ---- Also strip + footer ----
     rule(d, M, 966, R, width=2)
     d.text((M, 976),
-           "ALSO:  Trump seals Indonesia trade deal  \u00b7  EU readies "
-           "$84bn tariff reply  \u00b7  Thai\u2013Cambodia truce holds  "
-           "\u00b7  Spain votes Sunday",
+           "ALSO:  EU seals Indonesia trade deal  \u00b7  Bitcoin and "
+           "gold surge on Huang return  \u00b7  Spain votes Sunday",
            font=font(SANS_B, 14), fill=INK)
     img.save("entry.png", format="PNG", optimize=True)
 

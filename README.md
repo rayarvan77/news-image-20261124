@@ -19,10 +19,10 @@ six news tiles and an "also in the news" strip.
   executive, just 11 days after he quit, after President Trump lobbied
   the board; the shares post the biggest one-day market-cap gain on
   record for a US company, and the S&P 500 jumps 4.7%.
-- **Market reaction:** S&P 500 +4.7%, Nvidia's record gain, SK hynix
-  +20%, and the US blacklisting of Megaspeed the same day — the
-  Singapore chip firm at the centre of the affair that cost Huang his
-  job on 12 November.
+- **Market reaction:** S&P 500 +4.7%, Nvidia's record gain, Nasdaq
+  +6.5% and the Dow up 1,450 points — both surging on Huang's return.
+  Huang quit on 12 November after reports of affairs, one with a
+  suspected Chinese spy.
 - **War at sea:** Ukraine sinks the Russian warship Merkury off Libya
   with sea drones.
 - **Kyiv region:** a Russian drone strike kills 11 in Dymer; a boy is
@@ -33,11 +33,10 @@ six news tiles and an "also in the news" strip.
   in an all-stock deal.
 - **Pacific:** a magnitude 6.5 earthquake strikes Vanuatu, with no
   tsunami warning.
-- **The Gulf:** Iran hits Gulf sites as the US tightens sanctions, and
-  Trump warns Tehran of a "very traumatic" outcome.
-- **Also:** Trump seals an Indonesia trade deal, the EU readies an
-  $84bn tariff reply, the Thai–Cambodia truce holds, and Spain votes
-  on Sunday.
+- **Thai–Cambodia:** a ceasefire holds after weeks of border clashes
+  that killed 100+ and displaced hundreds of thousands.
+- **Also:** the EU seals an Indonesia trade deal, Bitcoin and gold
+  surge on Huang's return, and Spain votes on Sunday.
 
 Every fact on the page was checked against wire reporting from 23–24
 November 2026 (Reuters, The Wall Street Journal, CNN, AP and others).
